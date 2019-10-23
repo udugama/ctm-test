@@ -1,0 +1,47 @@
+{
+    "$id": "https://petstore.com/creditcard/verify-response.schema.json",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "creditcard/verify-response",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "status": {
+            "type": "string",
+            "enum": ["valid", "invalid"],
+            "description": "status of the validation result"
+        },
+        "content": {
+            "type": "object",
+            "description": "credit card document content.",
+            "additionalProperties": false,
+            "required": [ "customerId", "document", "name", "number", "type", "csv" ],
+            "properties": {
+                "customerId": {
+                    "type": "number",
+                    "description": "Unique number system for the customer"
+                },
+                "document": {
+                    "type": "string",
+                    "enum": ["creditcard"],
+                    "description": "request document type."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "credit card owners name."
+                },
+                "number": {
+                    "type": "number",
+                    "description": "credit card number"
+                },
+                "type": {
+                    "type": "string",
+                    "enum": ["Visa", "MasterCard", "Discover", "AMEX"]
+                },
+                "csv": {
+                    "type": "number",
+                    "description": "credit card csv number"
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "prasad.udugama.test.comparethemarket",
+  "version": "1.0.0",
+  "description": "prasad.udugama-compare-the-market-test",
+  "main": "src/index.js",
+  "scripts": {
+    "build": "rm -rf dist/ && npx tsc",
+    "start": "node dist/index.js",
+    "test": "npx jest",
+    "dev": "npx ts-node src/index.ts",
+    "lint": "tslint 'src/**/*.ts' --project tsconfig.json",
+    "start-app": "docker-compose up --build",
+    "stop-app": "docker-compose down"
+  },
+  "keywords": [
+    "test",
+    "prasad",
+    "udugama",
+    "comare",
+    "the",
+    "market"
+  ],
+  "author": "prasad.udugama <udugama@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^24.0.18",
+    "@types/koa": "^2.0.50",
+    "jest": "^24.9.0",
+    "lodash.clone": "^4.5.0",
+    "supertest": "^4.0.2",
+    "ts-jest": "^24.1.0",
+    "ts-node": "^8.4.1",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "ajv": "^6.10.2",
+    "koa": "^2.8.1",
+    "koa-body": "^4.1.1",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.7.1"
+  }
+}

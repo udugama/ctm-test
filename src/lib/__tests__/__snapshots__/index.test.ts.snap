@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`POST creditcard/verify successful response with invalid status - invalid number 1`] = `
+Object {
+  "content": Object {
+    "csv": 120,
+    "customerId": 1,
+    "document": "creditcard",
+    "name": "Prasad S Udugama",
+    "number": 4408041234567893,
+    "type": "Visa",
+  },
+  "status": "invalid",
+}
+`;
+
+exports[`POST creditcard/verify successful response with invalid status - invalid type validation 1`] = `
+Object {
+  "content": Object {
+    "csv": 120,
+    "customerId": 1,
+    "document": "creditcard",
+    "name": "Prasad S Udugama",
+    "number": 4408041234567893,
+    "type": "Visa",
+  },
+  "status": "invalid",
+}
+`;
+
+exports[`POST creditcard/verify successfully response 1`] = `"valid"`;
