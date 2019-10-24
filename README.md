@@ -12,7 +12,7 @@
 
 ## intro
 
-Node v10.16.3 is used for development.
+Node v10.xx is used for development.
 
 Enpoing is developed using `koa.js` framework and `mongodb` document database.
 
@@ -85,14 +85,14 @@ Note: On error deploying docker setup try removing existing images with same nam
 * This  will create new collection named Compare-the-market and will be able to send request to the server by the tool.
 * Endpoint request payload body is as follows:
 
-```{
+`{
  "customerId": 1,
  "document": "creditcard",
  "type": "Visa",
  "name": "Prasad S Udugama",
  "number": 4408041234567893,
  "csv": 120
-}```
+}`
 
 * Endpoint response payload body is as follows:
 
