@@ -1,18 +1,20 @@
 # Credit Card Verify API
 
-# About the test dspecifications
+# About the test specifications
 
-* Strongly typesd typescipt Langage been used.
-* `VS Code` Editor is used with typescipt and tslint plugin.
+* Strongly typed `typescipt` langauge been used.
 * Request specification is upgraded to give more context the the verify request.
-* Docker files to run the app in the dockerised environmentfor portability.
-* Mongo db database is used and saved every request for demonstration pupose.
-* Request and Response Schema and type validations in place to demonstrate the utilization of json schema.
-* Jest Test suite is implimented to run unit tests.
+* `Docker` files to run the app in the dockerised environmentfor portability.
+* `Mongodb` database is used and saved every request for demonstration pupose.
+* Request and Response Schema and type validations in place to demonstrate the utilization of `json schema`.
+* `Jest` Test suite is implimented to run unit tests.
+* Integrated tests added to test endpoints end to end functionality and the suite uses `newman` suite.
 
 ## intro
 
-Enpoing is developed using `koa.js` framework and mongodb document database.
+Node v10.16.3 is used for development.
+
+Enpoing is developed using `koa.js` framework and `mongodb` document database.
 
 Code is written in Typescript and compilation is performed using typescript engine.
 
@@ -22,11 +24,11 @@ Note: yarn package manager is used to lock the package versions and npm is used 
 
 ## Endponts
 
-* POST /creditcard/verify - create a Pet with the given payload.
+* POST /creditcard/verify - calidate credit card numbers and the sample paylload can be found under API Test section in this document.
 
 ## Payload Validations
 
-For the endpoing request and response payload validations `vlc`  `json schema` validation tool have been used. any violation of these rules will return 422 error response from the api;
+For the endpoing request and response payload validations `vlc`  `json schema` validation tool have been used. any violation of these json schemas for request and response will return 422 error response from the api. Json schemas documents can be refered  from `src/schema` folder in the repository.
 
 ## Seting Up the project
 
@@ -37,26 +39,50 @@ follow following set of steps to setup the project
 * Install yarn by typing following command `npm install -g yarn`.
 * Run command `yarn install` to install.
 
+### Building Application
+
+This Application requere to be compiled in order to run and the application.
+
+* Make sure npm modules installed.
+* Run `yarn build` to compile application.
+
 ### Unit Tests
 
 Number of Demonstrative tests avalable under the `jest` test suit.
 
 * Make sure npm modules exist if not run `yarn install`.
-* Run `yarn test`
+* Run `yarn test:unit`
+
+### Unit Tests Coverage
+
+Coverage report is added to jest test suite and and during the test suite run it will produce a coverage report.
+
+Currently coverage is set to low number and used for demonstration purpose.
+
+### Intigration Tests
+
+Number of Demonstrative tests avalable under the `jest` test suit.
+
+* Make sure npm modules exist if not run `yarn install`.
+* Run `yarn test:integration`
 
 ### Starting up Service
 
 * Run `yarn build` to compile the typescipt.
-* Make sure the host mashine has latest version of docker running.
-* Run start run `docker-compose up` to stand up docker infrastructure.
-* Test sending a request to the api endpoint. {refer to API Test section below to send request to test the api}
+* Make sure the host computer has latest version of docker running.
+* make sure application is build (refer to "Building Application" section above or run `yarn build`.
+* Run start run `yarn start-app` to stand up docker infrastructure.
+* To stop the server run `yarn stop-app`
+* Running `yarn test:integration` will be testing the dockerized application endpoints with postman/newman tests.
+* For manual testing test sending a request to the api endpoint. {refer to API Test section below to send request to test the api}
 
-Note: On error deploying docker setup try removing all existing images with same name.
+Note: On error deploying docker setup try removing existing images with same name.
 
 ### API Test
 
 * Download and install Postman from following website <https://www.getpostman.com>.
-* Import following postman file to the postman <resources/postman/test.postman_collection.json>.
+* Import following postman file to the postman </Users/prasad.udugama/develop/compare-the-market/resources/postman/comparethmarket.postman_collection.json>.
+* This  will create new collection named Compare-the-market and will be able to send request to the server by the tool.
 * Endpoint request payload body is as follows:
 
 ```{
@@ -81,3 +107,7 @@ Note: On error deploying docker setup try removing all existing images with same
         "csv": 120
     }
 }`
+
+request headers must consist following attribute :
+
+`Content-Type: 'application/json'`

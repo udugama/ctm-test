@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "242cb676-d585-4ef7-bf00-40edb4759bd7",
+		"name": "comparethmarket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "verifyCreditCard valid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "204e1a4c-2598-4e1b-8d83-df0d5ae55e58",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"response to have correct response\", function () {",
+							"    pm.expect(jsonData.status).to.eq(\"valid\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"customerId\": 1,\r\n\t\"document\": \"creditcard\",\r\n\t\"type\": \"Visa\",\r\n    \"name\": \"Prasad S Udugama\",\r\n    \"number\": 4408041234567893,\r\n    \"csv\": 120\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/creditcard/verify"
+			},
+			"response": []
+		},
+		{
+			"name": "verifyCreditCard  invalid",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77a1e540-3747-4dce-b32c-7a6ba33d4e3c",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"const jsonData = pm.response.json();",
+							"pm.test(\"response to have correct response\", function () {",
+							"    pm.expect(jsonData.status).to.eq(\"invalid\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"customerId\": 1,\r\n\t\"document\": \"creditcard\",\r\n\t\"type\": \"Visa\",\r\n    \"name\": \"Prasad S Udugama\",\r\n    \"number\": 5234567823455678,\r\n    \"csv\": 120\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/creditcard/verify"
+			},
+			"response": []
+		},
+		{
+			"name": "verifyCreditCard  validation error return 422",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "77a1e540-3747-4dce-b32c-7a6ba33d4e3c",
+						"exec": [
+							"pm.test(\"response is ok\", function () {",
+							"    pm.response.to.have.status(422);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"customerId\": 1,\r\n\t\"document\": \"creditcard\",\r\n\t\"type\": \"AMEX\",\r\n    \"name\": \"Prasad S Udugama\",\r\n    \"number\": 4234567823455678,\r\n    \"csv\": 120,\r\n    \"xyz\": 40000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost/creditcard/verify"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

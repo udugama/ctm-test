@@ -6,9 +6,10 @@
   "scripts": {
     "build": "rm -rf dist/ && npx tsc",
     "start": "node dist/index.js",
-    "test": "npx jest",
+    "test:unit": "npx jest",
+    "test:integration": "npx newman run resources/postman/comparethmarket.postman_collection.json",
     "dev": "npx ts-node src/index.ts",
-    "lint": "tslint 'src/**/*.ts' --project tsconfig.json",
+    "lint": "npx tslint 'src/**/*.ts' --project tsconfig.json",
     "start-app": "docker-compose up --build",
     "stop-app": "docker-compose down"
   },
@@ -27,6 +28,7 @@
     "@types/koa": "^2.0.50",
     "jest": "^24.9.0",
     "lodash.clone": "^4.5.0",
+    "newman": "^4.5.5",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
     "ts-node": "^8.4.1",
